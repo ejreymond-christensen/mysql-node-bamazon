@@ -23,9 +23,6 @@ connection.connect(function(err) {
   manage();
 });
 
-var productArray = [
-  ['ID', 'PRODUCT', 'PRICE']
-];
 
 var manage = function() {
   inquirer.prompt({
@@ -133,6 +130,15 @@ var addInventory = function() {
 };
 
 var addProduct = function(){
+  var departArray= [];
+
+  connection.query("SELECT * FROM departments", function(err, results) {
+    if (err)
+      throw err;
+    for (var i = 0; i < results.length; i++) {
+      departArray.push(results[i].department_name);
+    }});
+
   inquirer
     .prompt([
       {
@@ -142,8 +148,12 @@ var addProduct = function(){
       },
       {
         name: "category",
-        type: "input",
-        message: "What department does the product fall under?"
+        message: "What department does the product fall under?",
+        type: "list",
+        choices: function() {
+          var choiceArray = departArray;
+          return choiceArray;
+        }
       },
       {
         name: "price",
@@ -211,6 +221,7 @@ var continueManaging = function() {
       manage();
     } else {
       console.log("Goodbye");
+        connection.end();
     }
   });
 };

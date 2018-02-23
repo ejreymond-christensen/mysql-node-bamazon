@@ -70,7 +70,8 @@ var start = function() {
       if (chosenItem.stock_quantity > parseInt(answer.qty)) {
         connection.query("UPDATE products SET ? WHERE ?", [
           {
-            stock_quantity: (chosenItem.stock_quantity - parseInt(answer.qty))
+            stock_quantity: (chosenItem.stock_quantity - parseInt(answer.qty)),
+            product_sales: (chosenItem.product_sales + (parseInt(answer.qty)* chosenItem.price))
           }, {
             item_id: chosenItem.item_id
           }
@@ -114,6 +115,7 @@ var continueShopping = function() {
       start();
     } else {
       console.log("Please come back later!");
+        connection.end();
     }
   });
 };
