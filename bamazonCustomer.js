@@ -16,8 +16,8 @@ var connection = mysql.createConnection({
 
 // Function to connect to the Server
 connection.connect(function(err) {
-  // if (err)
-  //   throw err;
+  if (err)
+    throw err;
 
   //Starts the application is connection is made
   start();
@@ -79,11 +79,13 @@ var start = function() {
           if (error)
             throw err;
           console.log("Your order has been processed!");
-          console.log("You have purchased "+(parseInt(answer.qty))+" "+chosenItem.product_name);
-          console.log("Your account has been charged  "+(parseInt(answer.qty)*chosenItem.price)+ " dollars");
+          console.log("You have purchased " + (
+          parseInt(answer.qty)) + " " + chosenItem.product_name);
+          console.log("Your account has been charged  " + (
+          parseInt(answer.qty) * chosenItem.price) + " dollars");
           continueShopping();
         });
-      }else{
+      } else {
         console.log("Sorry, but we don't have enough stock at this time! Please try again later.");
         continueShopping();
       }
@@ -103,9 +105,12 @@ var displayTable = function() {
   console.log(output);
 };
 
-var continueShopping = function(){
+var continueShopping = function() {
   inquirer.prompt({type: "confirm", message: "Would you like to continue shopping?", name: "confirm", default: true}).then(function(response) {
     if (response.confirm === true) {
+      productArray = [
+        ['ID', 'PRODUCT', 'PRICE']
+      ];
       start();
     } else {
       console.log("Please come back later!");
