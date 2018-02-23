@@ -132,6 +132,61 @@ var addInventory = function() {
   });
 };
 
+var addProduct = function(){
+  inquirer
+    .prompt([
+      {
+        name: "item",
+        type: "input",
+        message: "What is the name of the product?"
+      },
+      {
+        name: "category",
+        type: "input",
+        message: "What department does the product fall under?"
+      },
+      {
+        name: "price",
+        type: "input",
+        message: "What is the pricing of the product?",
+        validate: function(value) {
+          if (isNaN(value) === false) {
+            return true;
+          }
+          return false;
+        }
+      },
+      {
+        name: "stock",
+        type: "input",
+        message: "What is the stocking level?",
+        validate: function(value) {
+          if (isNaN(value) === false) {
+            return true;
+          }
+          return false;
+        }
+      },
+    ]).then(function(answer) {
+      connection.query(
+        "INSERT INTO products SET ?",
+        {
+          product_name: answer.item,
+          department_name: answer.category,
+          price: answer.price,
+          stock_quantity: answer.stock
+        },
+        function(err) {
+          if (err) throw err;
+          console.log("The product is now registered");
+
+          continueManaging();
+        }
+      );
+    });
+};
+
+
 var productArray = [
   ['ID', 'PRODUCT', 'PRICE', 'QUANTITY ON HAND']
 ];
