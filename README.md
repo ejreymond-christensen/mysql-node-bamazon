@@ -5,7 +5,7 @@ CLI inventory tracker using MySQL and node
 This is an app that is run through the terminal with node and runs off a MySQL database and is a basic inventory system. The user can run three programs from the CLI,`bamazonCustomer.js`, `bamazonManager.js`, `bamazonSupervisor.js`.
 
 ### How to use Bamazon
-Videos for each of the modules can be found in the video folder.
+Videos for each of the modules can be found in the video folder. ![movie](https://github.com/ejreymond-christensen/ut-mysql-node-bamazon/blob/master/bamazon-demo.m4v)
 
 `bamazonCustomer.js` - this alllows the customer to select and purchase items with the help of inquirer. All transactions will update the database in MySQL.
 
