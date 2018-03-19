@@ -1,4 +1,4 @@
-# ut-mysql-node-bamazon
+# mysql-node-bamazon
 CLI inventory tracker using MySQL and node
 
 ### Bamazon App
@@ -14,4 +14,4 @@ Videos for each of the modules can be found in the video folder. ![movie](https:
 `bamazonSupervisor.js` - This program can display the profit margins for each department and add new departments to the program. Again, all transactions will update the database in MySQL
 
 ### How to run the program
-You can go to ut-mysql-node-bamazon repo and download the repo. with terminal, run `npm install`and all dependencies will be installed for running the program. A database will need to be set up and one can use the bamazon-products.sql file for set up. Next just run the program that you would like to use out of the terminal via node.
+You can go to mysql-node-bamazon repo and download the repo. with terminal, run `npm install`and all dependencies will be installed for running the program. A database will need to be set up and one can use the bamazon-products.sql file for set up. Next just run the program that you would like to use out of the terminal via node.
